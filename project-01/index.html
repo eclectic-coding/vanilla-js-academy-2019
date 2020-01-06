@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Password Visibility</title>
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+  <script defer
+          src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <style type="text/css">
+    /*body {*/
+    /*  margin: 1em auto;*/
+    /*  max-width: 40em;*/
+    /*  width: 88%;*/
+    /*}*/
+
+    /*label {*/
+    /*  display: block;*/
+    /*  width: 100%;*/
+    /*}*/
+
+    /*input {*/
+    /*  margin-bottom: 1em;*/
+    /*}*/
+
+    /*[type="checkbox"] {*/
+    /*  margin-bottom: 0;*/
+    /*  margin-right: 0.25em;*/
+    /*}*/
+  </style>
+</head>
+<body>
+<section class="hero is-primary is-fullheight">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <article class="card is-rounded">
+          <div class="card-content">
+            <p class="title has-text-black">Password Visibility</p>
+
+            <p class="content">Enter your username and password to login.</p>
+
+            <form>
+              <div class="field">
+                <label class="label" for="username">Username</label>
+                <div class="control has-icons-left">
+                  <input class="input" type="text" name="username"
+                         id="username">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                  </span>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label" for="password">Password</label>
+                <div class="control has-icons-left">
+                  <input class="input" type="password"
+                         name="password"
+                         id="password">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-key"></i>
+                  </span>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="show-password">
+                  <input type="checkbox" name="show-passwords"
+                         id="show-password">
+                  Show password
+                </label>
+              </div>
+
+              <p>
+                <a class="button is-primary" type="submit">Log In</a>
+              </p>
+            </form>
+
+            <script>
+              var btn = document.querySelector('#show-password')
+
+              btn.addEventListener('click', function (e) {
+                var passwordInput = document.querySelector('#password')
+                passwordInput.type = this.checked ? 'text' : 'password'
+              }, false)
+            </script>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>
