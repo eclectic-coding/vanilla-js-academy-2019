@@ -2,7 +2,7 @@
 
 You can use the `document.querySelector()` method to find the first matching element on a page. Pass in any valid CSS selector. If an element that matches that selector exists in the DOM, or UI, the `querySelector()` method will return the first matching one.
 
-Grab the first DIV 
+Grab the first DIV
 
 ```javascript
 var elem = document.querySelector('div');
@@ -27,13 +27,9 @@ if (elemNone) {
 }
 ```
 
+# Adding Event Listeners
 
-
-# Adding Event Listeners 
-
-
-
-Use `addEventListener` to listen for events on and interactions with an element. You can find [a full list of available events on the Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/Events). 
+Use `addEventListener` to listen for events on and interactions with an element. You can find [a full list of available events on the Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/Events).
 
 ```javascript
 var btn = document.querySelector('#click-me');
@@ -57,4 +53,5 @@ btn.addEventListener('click', function (event) {
 	console.log(event.target); // The clicked element
 }, false);
 ```
+More performant for the browser to declare variables outside of the click event.
 
