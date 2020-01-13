@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Password Visibility</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+<div class="card">
+  <h1>Password Visibility - Multiple Forms</h1>
+
+  <h2>Change Username</h2>
+
+  <p>Enter your username and password to change your username.</p>
+
+  <form>
+    <div>
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username">
+    </div>
+
+    <div>
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password">
+    </div>
+
+    <div>
+      <label for="show-password">
+        <input type="checkbox" name="show-password" id="show-password" data-pw-toggle="#password">
+        Show password
+      </label>
+    </div>
+
+    <p>
+      <button type="submit">Change Username</button>
+    </p>
+  </form>
+</div>
+
+<div class="card">
+  <h2>Change Password</h2>
+
+  <p>Enter your current password and new password below.</p>
+
+  <form>
+    <div>
+      <label for="current-password">Current Password</label>
+      <input type="password" name="current-password" id="current-password">
+    </div>
+
+    <div>
+      <label for="new-password">New Password</label>
+      <input type="password" name="new-password" id="new-password">
+    </div>
+
+    <div>
+      <label for="show-passwords">
+        <input type="checkbox" name="show-passwords" id="show-passwords"
+               data-pw-toggle="#current-password, #new-password">
+        Show passwords
+      </label>
+    </div>
+
+    <p>
+      <button type="submit">Change Passwords</button>
+    </p>
+  </form>
+</div>
+
+<script>
+  document.addEventListener('click', function(e) {
+    if (!e.target.matches('[data-pw-toggle]')) return
+
+    var passwords =
+      Array.prototype.slice.call(document.querySelectorAll(e.target.getAttribute('data-pw-toggle')))
+
+    passwords.forEach(function (password) {
+        if (e.target.checked) {
+          password.type = 'text'
+        } else {
+          password.type = 'password'
+        }
+    }
+    )
+  })
+</script>
+</body>
+</html>
