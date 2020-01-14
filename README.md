@@ -14,3 +14,13 @@
 - This project is a script that let’s users toggle the visibility of multiple password fields (username and change passwords.
 - Lesson [NOTES](project-03/NOTES.md)
 - Codepen [Project](https://codepen.io/eclecticcoding/pen/ExaQdrW)
+
+[Project4](./project-04) - Character Count
+- This project is a script counts characters in a textarea field.
+- Lesson [NOTES](project-04/NOTES.md)
+- Codepen [Project](https://codepen.io/eclecticcoding/pen/YzPjPxd)
+
+[Project5](./project-05) - Character & Word Count
+- This project is a script counts both words and characters in a textarea field.
+- Lesson [NOTES](project-05/NOTES.md)
+- Codepen [Project](https://codepen.io/eclecticcoding/pen/BayPypX)
