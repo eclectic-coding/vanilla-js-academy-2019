@@ -24,14 +24,21 @@
   const typedText = document.querySelector('#text')
 
   typedText.addEventListener('input', (e) => {
-    if (e.target.value) {
-      charCount.textContent = e.target.value.split('').length;
-      wordCount.textContent = e.target.value.match(/\S+/g).length;
-    }
-    else {
-      charCount.textContent = 0
-      wordCount.textContent = 0
-    }
+    // my solution
+    // if (e.target.value) {
+    //   charCount.textContent = e.target.value.split('').length;
+    //   wordCount.textContent = e.target.value.match(/\S+/g).length;
+    // }
+    // else {
+    //   charCount.textContent = 0
+    //   wordCount.textContent = 0
+    // }
+    // Author's solution
+    let words = typedText.value.split(/[\n\r\s]+/g).filter((word) => {
+      return word.length > 0
+    })
+    wordCount.textContent = words.length
+    charCount.textContent = typedText.value.length
   })
 
 </script>
