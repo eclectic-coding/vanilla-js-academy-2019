@@ -27,4 +27,4 @@
 
 [Project6](project-06_count-aria) - Announce Count
 - This project is a script counts both words and characters in a textarea field.
-- Codepen [Project]()
+- Codepen [Project](https://codepen.io/eclecticcoding/pen/xxbmeaw)
