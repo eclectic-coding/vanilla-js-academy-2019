@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Random Ron</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+<div class="card card__effect">
+  <h1>Random Ron</h1>
+
+  <blockquote>Hello</blockquote>
+
+  <p>
+    <button>More Rons</button>
+  </p>
+</div>
+<script>
+  // Your code goes here...
+  const quote = document.querySelector('blockquote')
+  const getMore = document.querySelector('button')
+
+  getRon()
+
+  getMore.addEventListener('click', getRon, false)
+
+  function getRon() {
+    fetch('http://ron-swanson-quotes.herokuapp.com/v2/quotes')
+    .then(resp => {
+      if (resp.ok) {
+        return resp.json()
+      } else {
+        return Promise.reject(resp)
+      }
+    }).then(quoteData => { quote.innerText = quoteData[0] })
+    .catch(err => console.warn("D'oh! Something went wrong", err))
+  }
+
+</script>
+<script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=default%2Ces6%2Cfetch%2CPromise"></script>
+</body>
+</html>
