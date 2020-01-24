@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Random Ron</title>
+  <link rel="stylesheet" href="main.css">
+  <style>
+    body {
+      margin: 1em auto;
+      max-width: 40em;
+      width: 88%;
+      background: #373b44; /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #4286f4, #373b44); /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #4286f4, #373b44); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
+    img {
+      max-width: 100%;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    blockquote {
+      padding-left: -0.5em;
+      margin: 1.5em;
+    }
+
+    .card {
+      width: 245px;
+      height: 100%;
+      margin: 3em 0;
+      border: 1px solid #ececec;
+      background-color: #fff;
+      border-radius: .5em;
+    }
+
+    .card__content {
+      padding: 0 1em;
+    }
+
+    .card__effect {
+      transition: transform .5s;
+    }
+
+    .card__effect::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transition: opacity 2s cubic-bezier(.165, .84, .44, 1);
+      box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .15);
+      content: '';
+      opacity: 0;
+      z-index: -1;
+    }
+
+    .card__effect:hover,
+    .card__effect:focus {
+      transform: scale3d(1.006, 1.006, 1);
+    }
+
+    .card__effect::after {
+      opacity: 1;
+    }
+
+
+  </style>
+</head>
+<body>
+
+
+<div class="card card__effect">
+
+  <img src="https://media.giphy.com/media/QoTNIz115WJK8/giphy.gif" alt="">
+  <div class="card__content">
+    <h2>Random Ron</h2>
+
+    <blockquote id="quote">Hello</blockquote>
+
+    <p>
+      <button id="get-quote">More Rons</button>
+    </p>
+  </div>
+</div>
+<script>
+  const quote = document.querySelector('#quote')
+  const getMore = document.querySelector('#get-quote')
+
+  let quoteStore = []
+
+  const getQuote = () => {
+    fetch('http://ron-swanson-quotes.herokuapp.com/v2/quotes')
+    .then(resp => {
+      if (resp.ok) {
+        return resp.json();
+      } else {
+        return Promise.reject(resp);
+      }
+    })
+    .then(data => {
+      console.log(data)
+
+      if (quoteStore.indexOf(data[0]) > -1) {
+        getQuote()
+        return
+      }
+
+      quote.textContent = data[0]
+      quoteStore.push(data[0])
+
+      if (quoteStore.length > 50) {
+        quoteStore.shift()
+      }
+    })
+
+  }
+  getQuote()
+
+  getMore.addEventListener('click', getQuote, false)
+
+</script>
+<script crossorigin="anonymous"
+        src="https://polyfill.io/v3/polyfill.min.js?features=default%2Ces6%2Cfetch%2CPromise"></script>
+</body>
+</html>

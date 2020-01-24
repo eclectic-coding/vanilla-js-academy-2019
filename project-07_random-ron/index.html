@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Random Ron</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+<img alt="A photo of Ron Swanson" src="http://giphygifs.s3.amazonaws.com/media/iofbYa67AbBg4/giphy.gif">
+
+<div class="card card__effect">
+  <h1>Random Ron</h1>
+
+  <blockquote id="quote">Hello</blockquote>
+
+  <p>
+    <button id="get-quote">More Rons</button>
+  </p>
+</div>
+<script>
+  const quote = document.querySelector('#quote')
+  const getMore = document.querySelector('#get-quote')
+
+  const getQuote = function () {
+    fetch('http://ron-swanson-quotes.herokuapp.com/v2/quotes').then(function (response) {
+      if (response.ok) {
+        return response.json()
+      } else {
+        return Promise.reject(response)
+      }
+    }).then(function (data) {
+      quote.textContent = data[0]
+    }).catch(function (error) {
+      quote.textContent = "D'oh! ... Something went wrong, sorry!"
+    })
+  }
+
+  getQuote()
+
+  getMore.addEventListener('click', getQuote, false)
+
+</script>
+<script crossorigin="anonymous"
+        src="https://polyfill.io/v3/polyfill.min.js?features=default%2Ces6%2Cfetch%2CPromise"></script>
+</body>
+</html>

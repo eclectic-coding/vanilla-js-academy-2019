@@ -28,3 +28,7 @@
 [Project6](project-06_count-aria) - Announce Count
 - This project is a script counts both words and characters in a textarea field.
 - Codepen [Project](https://codepen.io/eclecticcoding/pen/xxbmeaw)
+
+[Project7](project-07_random-ron) - Random Ron
+- This project uses the Fetch API to display random quotes from Ron Swanson.
+- Codepen [Project](https://codepen.io/eclecticcoding/pen/KKwrpQN)
